@@ -1,0 +1,31 @@
+<% include ./partials/messages %>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Welcome
+            <%= user.name %>
+        </h5>
+        <p class="card-text">Role :
+            <%= user.role %>
+            <br>
+            Team :
+            <%= user.team %>
+            <br>
+            Offset Balance :
+            <%= offsetBalance %>
+        </p>
+    </div>
+</div>
+
+<script>
+    // querry api to request for slot availability based on current user team
+    (function () {
+        let leavesArr = []
+        $.ajax({
+            url: "http://localhost:5000/api/leaves", success: function (result) {
+                leavesArr = result;
+                console.log(leavesArr);
+            }
+        });
+    })();
+</script>

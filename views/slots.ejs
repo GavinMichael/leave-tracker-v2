@@ -1,0 +1,77 @@
+<% include ./partials/messages %>
+
+<p class="lead mb-3">Welcome to slots page</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h5>2019</h5>
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-secondary">January</button>
+                <button type="button" class="btn btn-secondary">February</button>
+                <button type="button" class="btn btn-secondary">March</button>
+                <button type="button" class="btn btn-secondary">April</button>
+                <button type="button" class="btn btn-secondary">May</button>
+                <button type="button" class="btn btn-secondary">June</button>
+                <button type="button" class="btn btn-secondary">July</button>
+                <button type="button" class="btn btn-secondary">August</button>
+                <button type="button" class="btn btn-secondary">September</button>
+                <button type="button" class="btn btn-secondary" onclick="renderMonth('October')">October</button>
+                <button type="button" class="btn btn-secondary">November</button>
+                <button type="button" class="btn btn-secondary">December</button>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <h5>2020</h5>
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-secondary">January</button>
+                <button type="button" class="btn btn-secondary">February</button>
+                <button type="button" class="btn btn-secondary">March</button>
+                <button type="button" class="btn btn-secondary">April</button>
+                <button type="button" class="btn btn-secondary">May</button>
+                <button type="button" class="btn btn-secondary">June</button>
+                <button type="button" class="btn btn-secondary">July</button>
+                <button type="button" class="btn btn-secondary">August</button>
+                <button type="button" class="btn btn-secondary">September</button>
+                <button type="button" class="btn btn-secondary">October</button>
+                <button type="button" class="btn btn-secondary">November</button>
+                <button type="button" class="btn btn-secondary">December</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    let leavesData = [];
+    let leavesArr = [];
+
+    function fetchData() {
+        $.ajax({
+            url: "http://localhost:5000/api/leaves",
+            success: function (result) {
+                sortData(result);
+            }
+        }); // end of Ajax
+    }
+
+    function sortData(result) {
+        
+        leavesArr = result;
+
+        leavesArr.forEach((item) => {
+            console.log(item)
+        })
+    }
+
+    function renderMonth(month) {
+        console.log(month)
+
+
+    }
+
+    fetchData();
+
+</script>
